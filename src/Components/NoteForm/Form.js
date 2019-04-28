@@ -7,8 +7,9 @@ class Form extends Component{
         this.addNote = this.addNote.bind(this);
     }
     addNote(){
-        console.log(this.textInput.value);
-        
+        this.props.addNote(this.textInput.value);
+        this.textInput.value = '';
+        this.textInput.focus();
     }
     render(){
         return(
