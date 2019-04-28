@@ -1,0 +1,11 @@
+.Note{
+    background-color: #fff;
+    padding: 2vw;
+    color: #000;
+    margin-top: 1vw;
+    border-radius: 5px;
+}
+.Note span{
+    cursor: pointer;
+    font-size: 6vw;
+}

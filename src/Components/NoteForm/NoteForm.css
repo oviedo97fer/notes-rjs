@@ -1,0 +1,18 @@
+.NoteForm input[type='text']{
+    padding: 3vw;
+    width: 65vw;
+    border-top-left-radius: 30vw;
+    border-bottom-left-radius: 30vw;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.NoteForm button{
+    padding: 3vw;
+    background-color: #333;
+    border:0;
+    color: #fff;
+    border-top-left-radius: 0vw;
+    border-bottom-left-radius: 0vw;
+    border-bottom-right-radius: 30vw;
+    border-top-right-radius: 30vw;
+}
