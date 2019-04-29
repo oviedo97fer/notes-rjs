@@ -12,8 +12,6 @@ import 'firebase/database';
 class App extends Component {
   constructor(){
     super();
-    this.addNote = this.addNote.bind(this);
-    this.removeNote = this.removeNote.bind(this);
     this.state={
       notes: [
         /* {noteId: 1, noteContent: 'note 1'},
@@ -21,18 +19,21 @@ class App extends Component {
       ]
     };
 
+    this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
+    //conexion con   base de datos
     this.app = firebase.initializeApp(DB_CONFIG);
     this.db= this.app.database().ref().child('notes');
   }
 
   componentDidMount(){
-    const notes = this.state.notes;
+    const { notes } = this.state;
     //para actualizar la vista al agregar:
     this.db.on('child_added', snap=>{
       notes.push({
         noteId: snap.key,
-        notesContent: snap.val().noteContent
-      })
+        noteContent: snap.val().noteContent
+      });
       this.setState({
         notes
       })
@@ -44,6 +45,7 @@ class App extends Component {
           notes.splice(i, 1);
         }
       }
+      console.log(notes)
       this.setState({
         notes
       })
@@ -51,15 +53,6 @@ class App extends Component {
   }
 
   addNote(note){
-    /* let { notes } = this.state;
-    notes.push({
-      noteId: notes.length+1 ,
-      noteContent: note
-    });
-    this.setState({
-      notes
-    }); */
-
     this.db.push().set({noteContent: note});
   }
   removeNote(noteId){
@@ -69,9 +62,12 @@ class App extends Component {
   render() {
     return (
       <div className="notesContainer">
-        <div className="notesHeader">
-        <h1>React & Firebase App</h1>
-        </div>
+
+            <div className="notesHeader">
+
+                <h1>Notes</h1>
+
+            </div>
         <div className='notesBody'>
           <ul>{
             this.state.notes.map(note => {

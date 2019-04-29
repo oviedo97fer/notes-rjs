@@ -15,7 +15,7 @@ class Note extends Component {
         }
         return;
     }
-    render(){ 
+    render(props){ 
         return(
             <div className='Note'>
                 <span 
